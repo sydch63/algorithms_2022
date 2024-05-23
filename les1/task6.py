@@ -18,23 +18,43 @@
 Примечание: ПРОШУ ВАС ВНИМАТЕЛЬНО ЧИТАТЬ ЗАДАНИЕ!
 """
 
+#dct1 = {'ex1':'5 + 5 = x','ex2':'2 * x = 10','ex3':'x / 5 = 2'}
+ex1 = '5 + 5 = x'
+ex2 = '2 * x = 10'
+ex3 = 'x / 5 = 2'
+
 class TaskBoard:
     def __init__(self):
-        self.elems = []
+        self.task = []
+        self.work = []
+        self.res = []
 
     def is_empty(self):
-        return self.elems == []
+        return self.task == []
 
-    def to_queue(self, item):
-        self.elems.insert(0, item)
+    #Функция для помещения задач в очередь ex(1)
+    def to_queue_ex(self, ex):
+        self.task.insert(0, ex)
 
-    def from_queue(self):
-        return self.elems.pop()
+    # Функция для изъятия задач из очереди ex(1)
+    def from_queue_ex(self,action):
+        if action == 'done': #решаем и помещаем в res(3) очередь
+            done = self.task.pop()
+            self.res.insert(0, done)
+            return f'Задача ({done}) решена и помещена в очередь решенных'
+        else: #задача не решена и помещается в work(2) очередь
+            inprogress = self.task.pop()
+            self.work.insert(0, inprogress)
+            return f'Задача ({inprogress}) решена и помещена в очередь решенных'
 
     def size(self):
-        return len(self.elems)
+        return len(self.task)
 
 
 if __name__ == '__main__':
     TB_obj = TaskBoard()
-    test
+    #Помещаем задачи в список очереди ex(1)
+    TB_obj.to_queue(ex1)
+    TB_obj.to_queue(ex2)
+    TB_obj.to_queue(ex3)
+    #TB_obj.task --> ['x / 5 = 2', '2 * x = 10', '5 + 5 = x']
