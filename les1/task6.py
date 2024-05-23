@@ -35,17 +35,21 @@ class TaskBoard:
     #Функция для помещения задач в очередь ex(1)
     def to_queue_ex(self, ex):
         self.task.insert(0, ex)
-
-    # Функция для изъятия задач из очереди ex(1)
-    def from_queue_ex(self,action):
-        if action == 'done': #решаем и помещаем в res(3) очередь
+#подумать как упростить как в задаче 5 решенной преподом
+    # Функция для изъятия задач из очереди ex(1) или work(2)
+    def from_queue(self,queue,action):
+        if action == 'done' and queue == 1: #решаем и помещаем в res(3) очередь
             done = self.task.pop()
             self.res.insert(0, done)
             return f'Задача ({done}) решена и помещена в очередь решенных'
+        elif action == 'revision' and queue == 2:
+            revision = self.work.pop()
+            self.res.insert(0, revision)
+            return f'Задача ({revision}) решена и помещена в очередь решенных'
         else: #задача не решена и помещается в work(2) очередь
             inprogress = self.task.pop()
             self.work.insert(0, inprogress)
-            return f'Задача ({inprogress}) решена и помещена в очередь решенных'
+            return f'Задача ({inprogress}) решена и помещена в очередь на доработку'
 
     def size(self):
         return len(self.task)
@@ -54,7 +58,7 @@ class TaskBoard:
 if __name__ == '__main__':
     TB_obj = TaskBoard()
     #Помещаем задачи в список очереди ex(1)
-    TB_obj.to_queue(ex1)
-    TB_obj.to_queue(ex2)
-    TB_obj.to_queue(ex3)
+    TB_obj.to_queue_ex(ex1)
+    TB_obj.to_queue_ex(ex2)
+    TB_obj.to_queue_ex(ex3)
     #TB_obj.task --> ['x / 5 = 2', '2 * x = 10', '5 + 5 = x']
