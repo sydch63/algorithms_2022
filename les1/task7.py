@@ -40,7 +40,7 @@ def pal_checker(string):
     dc_obj = DequeClass()
 
     for el in string:
-        dc_obj.add_to_rear(el)
+        if el != ' ':dc_obj.add_to_rear(el)
 
     still_equal = True
 
@@ -54,3 +54,17 @@ def pal_checker(string):
 
 
 print(pal_checker("молоко делили ледоколом"))
+
+string = "молоко делили ледоколом"
+dc_obj = DequeClass()
+
+for el in string:
+    dc_obj.add_to_rear(el)
+#lst = ['м', 'о', 'л', 'о', 'к', 'о', 'д', 'е', 'л', ' ', 'и', 'л', 'и', 'л', 'е', 'д', ' ', 'о', 'к', 'о', 'л', 'о', 'м']
+still_equal = True
+#
+# while dc_obj.size() > 1 and still_equal:
+#     first = dc_obj.remove_from_front()
+#     last = dc_obj.remove_from_rear()
+#     if first != last:
+#         still_equal = False
