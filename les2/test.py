@@ -1,9 +1,12 @@
-def get_sum(lst):
-    if len(lst) == 1:
-        return lst[0]
-    return lst[0] + get_sum(lst[1:])
+def convert_to_str(n, base_val):
+    convert_str = "0123456789ABCDEF"
+    if n < base_val:
+        return convert_str[n]
+    # Здесь выполняются 2-й и 3-й законы рекурсии
+    # выполняется рекурсивный вызов и происходит
+    # уменьшение размера задания с помощью деления
+    else:
+        return convert_to_str(n // base_val, base_val) + convert_str[n % base_val]
 
-a = [1, 2 ,3]
-get_sum(a)
 
-#1 + 3 = L
+print(convert_to_str(5, 2))

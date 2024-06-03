@@ -41,6 +41,12 @@ def calc():
         elif oper == '/':
             print(f'Ваш результат:{a/b}')
             return calc()
+        elif oper == '*':
+            print(f'Ваш результат:{a*b}')
+            return calc()
+        elif oper == '-':
+            print(f'Ваш результат:{a-b}')
+            return calc()
         else:
             print('Вы ввели неправильный знак операции')
             return calc()
