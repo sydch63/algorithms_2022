@@ -18,46 +18,50 @@
 Количество четных и нечетных цифр в числе равно: (1, 2)
 """
 
-def chetnechet(a):
-    chet = 0
-    nechet = 0
-    x = 10
-    if len(a) == 1:
-        return print(chet), chetnechet(a)
+# def chetnechet(a):
+#     chet = 0
+#     nechet = 0
+#     x = 10
+#     if len(a) == 1:
+#         return print(chet), chetnechet(a)
+#
+#     return chetnechet(int(a)%10)
+# #(int(a)//x)%2 == 0
+# #chetnechet(123)
+#
+# chet = 0
+# nechet = 0
+#
+# a = 123
+# b = a%10 #3
+# if b%2 == 0:
+#     chet += 1
+# else:
+#     nechet += 1
+# a = a//10 #12
+# b = a%10 #2
+# if b%2 == 0:
+#     chet += 1
+# else:
+#     nechet += 1
+# a = a//10 #1
+# b = a%10 #1
+# if b%2 == 0:
+#     chet += 1
+# else:
+#     nechet += 1
 
-    return chetnechet(int(a)%10)
-#(int(a)//x)%2 == 0
-#chetnechet(123)
 
-chet = 0
-nechet = 0
-
-a = 123
-b = a%10 #3
-if b%2 == 0:
-    chet += 1
-else:
-    nechet += 1
-a = a//10 #12
-b = a%10 #2
-if b%2 == 0:
-    chet += 1
-else:
-    nechet += 1
-a = a//10 #1
-b = a%10 #1
-if b%2 == 0:
-    chet += 1
-else:
-    nechet += 1
-
-
-def chetnechet(a):
-    nechet = a % 10 % 2
-
+def chetnechet(a=None, chet=0,nechet=0):
+    if a == None:
+        a = int(input('Введите число: '))
+    if a%10%2 == 0:
+        chet += 1
+    else:
+        nechet += 1
     if len(str(a)) == 1:
-        return print(a,nechet)
-    return chetnechet(a // 10),
+        return print(f'Количество четных и нечетных цифр в числе равно: ({chet}, {nechet})')
+    return chetnechet(a // 10,chet,nechet)
 
-
-chetnechet(123)
+chetnechet()
+#chetnechet(int(input('Введите число: ')))
