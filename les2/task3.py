@@ -19,11 +19,22 @@
 1230 -> 0321
 """
 
-def coup(a=None):
+def coup(a=None,revers=''):
     if a is None:
         a = int(input('Введите число, которое требуется перевернуть: '))
+    revers += str(a%10)
     if len(str(a)) == 1:
-        return print(f'Перевернутое число:{a})')
-    return coup(a // 10)
+        return print(f'Перевернутое число:{revers}')
+    return coup(a // 10,revers)
 
 coup()
+
+# a = 123
+# b = a%10 #3
+# a = a//10 #12
+# c = str(b) #str 3
+# b = a%10 #2
+# a = a//10 #1
+# c += str(b) #str 32
+# #esli last chislo to prosto
+# c += str(a) #str 321
