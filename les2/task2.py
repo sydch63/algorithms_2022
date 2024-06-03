@@ -50,3 +50,14 @@ if b%2 == 0:
     chet += 1
 else:
     nechet += 1
+
+
+def chetnechet(a):
+    nechet = a % 10 % 2
+
+    if len(str(a)) == 1:
+        return print(a,nechet)
+    return chetnechet(a // 10),
+
+
+chetnechet(123)
