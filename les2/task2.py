@@ -19,12 +19,34 @@
 """
 
 def chetnechet(a):
-    a = a
     chet = 0
     nechet = 0
     x = 10
-    if (int(a)//x)%2 == 0:
-        chet += 1
+    if len(a) == 1:
         return print(chet), chetnechet(a)
 
-chetnechet(123)
+    return chetnechet(int(a)%10)
+#(int(a)//x)%2 == 0
+#chetnechet(123)
+
+chet = 0
+nechet = 0
+
+a = 123
+b = a%10 #3
+if b%2 == 0:
+    chet += 1
+else:
+    nechet += 1
+a = a//10 #12
+b = a%10 #2
+if b%2 == 0:
+    chet += 1
+else:
+    nechet += 1
+a = a//10 #1
+b = a%10 #1
+if b%2 == 0:
+    chet += 1
+else:
+    nechet += 1
