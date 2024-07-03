@@ -16,6 +16,6 @@
 
 def matan(n,a=0,b=0):
     if n != 0:
-        matan(n-1,a = a+n)
+        matan(n-1,a = a+n, b = b+1)
     else:
-        print(a == n*(n+1)/2)
+        print(a == b*(b+1)/2)
