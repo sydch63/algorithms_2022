@@ -27,12 +27,10 @@ from hashlib import pbkdf2_hmac
 from binascii import hexlify
 
 with open('salt_and_pass.txt','r') as f:
-    salt_and_pass = f.readlines()
+    salt_and_hash = f.readlines()
 
 passw = input("Введите пароль: ")
-salt_usr = bytes(salt_and_pass[0],'utf-8')
-with open('salt_and_pass.txt','w') as f:
-    salt_and_pass = f.write(f'aue;{passw}')
+salt_usr = bytes(salt_and_hash[0],'utf-8')
 bpassw = bytes(passw,'utf-8')
 
 
@@ -42,6 +40,9 @@ obj = pbkdf2_hmac(hash_name='sha256',
                 iterations= 10)
 hash = hexlify(obj).decode()
 bd = print(f'В базе данных хранится строка: {hash}')
+
+with open('salt_and_pass.txt','w') as f:
+    salt_and_hash = f.write(f'aue;{hash}')
 
 checkpassw = input("Введите пароль для проверки: ")
 bpassw = bytes(checkpassw,'utf-8')
