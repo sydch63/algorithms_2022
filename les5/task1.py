@@ -31,9 +31,11 @@
 
 from collections import ChainMap,defaultdict,Counter
 
-all_company = ChainMap()
-dct_company = defaultdict(int)
 
+dct_company = defaultdict(int)
+average_profit = 0
+profit_high = []
+profit_low = []
 
 count = int(input('Введите количество предприятий для расчета прибыли: '))
 
@@ -42,14 +44,18 @@ while count != 0:
     profit_company = input('Введите через пробел, прибыль данного предприятия за каждый квартал(Всего 4 квартала):')
     dct_company[name_company] = {'profit':[int(i) for i in profit_company.split()]} #прибыль по кварталам в виде списка, значения инт
     dct_company[name_company].update({'summary_profit':sum(dct_company[name_company]['profit'])}) #суммарная прибыль за все кварталы
+    #all_profit = Counter(sum(dct_company[name_company]['profit']))
+    average_profit += dct_company[name_company]['summary_profit']
+    if dct_company[name_company]['summary_profit'] > average_profit/len(dct_company):
+        profit_high.append(name_company)
+    else:
+        profit_low.append(name_company)
     count -= 1
 
-average_profit = 0
 
-for i in dct_company.keys():
-    average_profit += dct_company[i]['summary_profit']
-    print()
+print()
+print(f'Средняя годовая прибыль всех предприятий: {average_profit/len(dct_company)}')
 
-print(f'Средняя годовая прибыль всех предприятий: {average_profit}')
+
 
     
