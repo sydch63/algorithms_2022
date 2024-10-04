@@ -18,24 +18,38 @@
 Введите количество предприятий для расчета прибыли: 2
 Введите название предприятия: Рога
 через пробел введите прибыль данного предприятия
-за каждый квартал(Всего 4 квартала): 235 345634 55 235
+за каждый квартал(Всего 4 квартала): 235 345634 55 235      346159
 
 Введите название предприятия: Копыта
 через пробел введите прибыль данного предприятия
-за каждый квартал(Всего 4 квартала): 345 34 543 34
+за каждый квартал(Всего 4 квартала): 345 34 543 34          956
 
 Средняя годовая прибыль всех предприятий: 173557.5
 Предприятия, с прибылью выше среднего значения: Рога
 Предприятия, с прибылью ниже среднего значения: Копыта
 """
 
-from collections import ChainMap
+from collections import ChainMap,defaultdict,Counter
+
+all_company = ChainMap()
+dct_company = defaultdict(int)
+
 
 count = int(input('Введите количество предприятий для расчета прибыли: '))
 
 while count != 0:
     name_company = input('Введите название предприятия: ')
-
+    profit_company = input('Введите через пробел, прибыль данного предприятия за каждый квартал(Всего 4 квартала):')
+    dct_company[name_company] = {'profit':[int(i) for i in profit_company.split()]} #прибыль по кварталам в виде списка, значения инт
+    dct_company[name_company].update({'summary_profit':sum(dct_company[name_company]['profit'])}) #суммарная прибыль за все кварталы
     count -= 1
+
+average_profit = 0
+
+for i in dct_company.keys():
+    average_profit += dct_company[i]['summary_profit']
+    print()
+
+print(f'Средняя годовая прибыль всех предприятий: {average_profit}')
 
     
