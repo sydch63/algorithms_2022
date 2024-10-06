@@ -46,15 +46,21 @@ while count != 0:
     dct_company[name_company].update({'summary_profit':sum(dct_company[name_company]['profit'])}) #суммарная прибыль за все кварталы
     #all_profit = Counter(sum(dct_company[name_company]['profit']))
     average_profit += dct_company[name_company]['summary_profit']
-    if dct_company[name_company]['summary_profit'] > average_profit/len(dct_company):
-        profit_high.append(name_company)
-    else:
-        profit_low.append(name_company)
     count -= 1
+
+average_profit_year = average_profit/len(dct_company)
+
+for company in dct_company.keys():
+    if average_profit_year < dct_company[company]['summary_profit']:
+        profit_high.append(company)
+    else:
+        profit_low.append(company)
 
 
 print()
-print(f'Средняя годовая прибыль всех предприятий: {average_profit/len(dct_company)}')
+print(f'Средняя годовая прибыль всех предприятий: {average_profit_year}')
+print(f"Предприятия, с прибылью выше среднего значения:", *profit_high,sep=" ")
+print(f"Предприятия, с прибылью ниже среднего значения:", *profit_low,sep=" ")
 
 
 
