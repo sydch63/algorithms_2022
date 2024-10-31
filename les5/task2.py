@@ -37,7 +37,7 @@ def hex_do():
     dct_number['2'] = [i for i in number.split()[1]]
     summary = reduce(lambda x,y:int(''.join(x),16) + int(''.join(y),16),dct_number.values())
     multi = reduce(lambda x,y:int(''.join(x),16) * int(''.join(y),16),dct_number.values())
-    print(f'Сумма чисел: {[i for i in format(sumary, "X")]}')
+    print(f'Сумма чисел: {[i for i in format(summary, "X")]}')
     print(f'Произведение чисел: {[i for i in format(multi, "X")]}')
 
 hex_do()
