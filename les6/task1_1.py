@@ -1,18 +1,18 @@
-from memory_profiler import profile
+from memory_profiler import memory_usage
+from pympler import asizeof
+from numpy import array
 
-import hashlib
+data = [15 * 3,15 / 3,15 // 2,15 ** 2]
 
-st = 'papa'
-result = set()
-check = 0
+for i in data:
+    print(type(i),"Полученный тип целое число: ",isinstance(i,int))
 
-res = list()
-res_set = set()
+print(asizeof.asizeof(data))#240
 
 
-for i in range(len(st)):
-        for j in range(i + 1, len(st) + 1):
-            unic = st[i:j]
-            if unic != st:
-                hash_oj = hashlib.md5(bytes(unic,'utf-8')).hexdigest()
-                res_set.add(hash_oj)
+data = array([15 * 3,15 / 3,15 // 2,15 ** 2])
+
+for i in data:
+    print(type(i),"Полученный тип целое число: ",isinstance(i,int))
+
+print(asizeof.asizeof(data))#152
