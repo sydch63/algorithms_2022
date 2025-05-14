@@ -23,7 +23,6 @@
 from random import randint
 from timeit import timeit
 
-
 def bubble_sort(lst_obj):
     n = 1
     while n < len(lst_obj):
@@ -31,32 +30,56 @@ def bubble_sort(lst_obj):
             if lst_obj[i] > lst_obj[i+1]:
                 lst_obj[i], lst_obj[i+1] = lst_obj[i+1], lst_obj[i]
         n += 1
-    return lst_obj
+    return print(lst_obj)
 
 
-orig_list = [randint(-100, 100) for _ in range(10)]
+def bubble_sort_enh(lst_obj):
+    n = 1
+    while n < len(lst_obj):
+        for i in range(len(lst_obj)-n):
+            if lst_obj[i] > lst_obj[i+1]:
+                lst_obj[i], lst_obj[i+1] = lst_obj[i+1], lst_obj[i]
+        n += 1
+        if n+1 == len(lst_obj):
+            break
+    return print(lst_obj)
 
-# замеры 10
+
+orig_list = [randint(-101, 100) for _ in range(1000)]
+#orig_list = [-4, 66, -88, 8, -99, 18, -90, -50, -25, 64]
+
+
+
+#
+# # замеры 10
 print(
     timeit(
         "bubble_sort(orig_list[:])",
         globals=globals(),
-        number=1000))
+        number=10))
 
-orig_list = [randint(-100, 100) for _ in range(100)]
-
-# замеры 100
 print(
     timeit(
-        "bubble_sort(orig_list[:])",
+        "bubble_sort_enh(orig_list[:])",
         globals=globals(),
-        number=1000))
+        number=10))
 
-orig_list = [randint(-100, 100) for _ in range(1000)]
+# orig_list = [randint(-100, 100) for _ in range(100)]
 
-# замеры 1000
-print(
-    timeit(
-        "bubble_sort(orig_list[:])",
-        globals=globals(),
-        number=1000))
+
+#
+# # замеры 100
+# print(
+#     timeit(
+#         "bubble_sort(orig_list[:])",
+#         globals=globals(),
+#         number=1000))
+#
+# orig_list = [randint(-100, 100) for _ in range(1000)]
+#
+# # замеры 1000
+# print(
+#     timeit(
+#         "bubble_sort(orig_list[:])",
+#         globals=globals(),
+#         number=1000))
