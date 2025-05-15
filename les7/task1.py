@@ -30,7 +30,7 @@ def bubble_sort(lst_obj):
             if lst_obj[i] > lst_obj[i+1]:
                 lst_obj[i], lst_obj[i+1] = lst_obj[i+1], lst_obj[i]
         n += 1
-    return print(lst_obj)
+    return lst_obj
 
 
 def bubble_sort_enh(lst_obj):
@@ -42,13 +42,14 @@ def bubble_sort_enh(lst_obj):
         n += 1
         if n+1 == len(lst_obj):
             break
-    return print(lst_obj)
+    return lst_obj
 
 
-orig_list = [randint(-101, 100) for _ in range(1000)]
-#orig_list = [-4, 66, -88, 8, -99, 18, -90, -50, -25, 64]
+orig_list = [randint(-101, 100) for _ in range(10)]
 
+#Итог при среднем кол-ве элементов улучшеная версия работает чуть быстрее, в остальных сравнимое равенство
 
+print(orig_list)
 
 #
 # # замеры 10
@@ -56,30 +57,44 @@ print(
     timeit(
         "bubble_sort(orig_list[:])",
         globals=globals(),
-        number=10))
+        number=100),bubble_sort(orig_list[:]))
 
 print(
     timeit(
         "bubble_sort_enh(orig_list[:])",
         globals=globals(),
-        number=10))
+        number=100),bubble_sort_enh(orig_list[:]))
 
-# orig_list = [randint(-100, 100) for _ in range(100)]
+orig_list = [randint(-101, 100) for _ in range(100)]
+print(orig_list)
 
 
-#
-# # замеры 100
-# print(
-#     timeit(
-#         "bubble_sort(orig_list[:])",
-#         globals=globals(),
-#         number=1000))
-#
-# orig_list = [randint(-100, 100) for _ in range(1000)]
-#
-# # замеры 1000
-# print(
-#     timeit(
-#         "bubble_sort(orig_list[:])",
-#         globals=globals(),
-#         number=1000))
+# замеры 100
+print(
+    timeit(
+        "bubble_sort(orig_list[:])",
+        globals=globals(),
+        number=100),bubble_sort(orig_list[:]))
+
+print(
+    timeit(
+        "bubble_sort_enh(orig_list[:])",
+        globals=globals(),
+        number=100),bubble_sort_enh(orig_list[:]))
+
+
+orig_list = [randint(-100, 100) for _ in range(1000)]
+print(orig_list)
+# замеры 1000
+print(
+    timeit(
+        "bubble_sort(orig_list[:])",
+        globals=globals(),
+        number=100),bubble_sort(orig_list[:]))
+
+print(
+    timeit(
+        "bubble_sort_enh(orig_list[:])",
+        globals=globals(),
+        number=100),bubble_sort_enh(orig_list[:]))
+
