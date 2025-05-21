@@ -22,4 +22,3 @@ from timeit import timeit
 lst = [randint(1,10) for i in range(2*randint(1,10)+1)]
 
 a = [4, 6, 10, 10, 1, 7, 8, 9, 7, 3, 3, 4, 4, 10, 9, 3, 1]
-,
