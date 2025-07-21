@@ -69,7 +69,13 @@ class BinaryTree:
 
     # метод доступа к левому потомку
     def get_left_child(self):
-        return self.left_child
+        try:
+            if self.left_child is None:
+                raise Exception
+            # else:
+            #     return self.left_child
+        except:
+            print('Нет левого потомка')
 
     # метод установки корня
     def set_root_val(self, obj):
@@ -77,7 +83,13 @@ class BinaryTree:
 
     # метод доступа к корню
     def get_root_val(self):
-        return self.root
+        try:
+            if self.root is None:
+                raise Exception
+            else:
+                return self.root
+        except:
+            print('Нет корня')
 
 
 r = BinaryTree(8)
@@ -85,9 +97,9 @@ print(r.get_root_val())
 print(r.get_left_child())
 r.insert_left(40)
 print(r.get_left_child())
-print(r.get_left_child().get_root_val())
-r.insert_right(12)
-print(r.get_right_child())
-print(r.get_right_child().get_root_val())
-r.get_right_child().set_root_val(16)
-print(r.get_right_child().get_root_val())
+# print(r.get_left_child().get_root_val())
+# r.insert_right(12)
+# print(r.get_right_child())
+# print(r.get_right_child().get_root_val())
+# r.get_right_child().set_root_val(16)
+# print(r.get_right_child().get_root_val())
